@@ -7,6 +7,15 @@
     <h1>{{ msg }}</h1>
     <img class="proPic" src="../images/jojo.jpg" alt="">
 
+    <div>
+      <h2>Description</h2>
+      <img class="logo" src="../images/logo.png" alt="">
+      <p>Hello everyone! I created this app for practicing my Vue.js skills <br> combined
+        with Node.js, Express.js and postgreSQL database. If you have any suggestion,<br> please
+        contact me via my contact information in my profile.
+      </p>
+    </div>
+
     <div class="navi">
       <li class="nav-item">
         <router-link to="/monsters">Monsters</router-link>
@@ -68,6 +77,11 @@ h1{
 
 .name{
   margin: 0 0 0 50px;
+}
+
+.logo{
+  height: 50px;
+  width: 50px;
 }
 
 </style>

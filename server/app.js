@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const monsters = require('./routes/monsters')
 const habitats = require('./routes/habitats')
 const lives = require('./routes/lives')
@@ -7,6 +8,8 @@ const lives = require('./routes/lives')
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
+
 app.use('/monsters', monsters)
 app.use('/habitats', habitats)
 app.use('/lives', lives)
