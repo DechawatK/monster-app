@@ -13,14 +13,16 @@
     </div>
 
     <h1>Monsters's list</h1>
+    <InputMonsters />
     <div class="tableMonsters">
         <div class="listHeader">
             <span>Name</span>
             <span>Personality</span>
         </div>
         <ul class="listMonsters">
-            <li v-for="monster in monsters" :key="monster.id">
-             <span>{{monster.name}}</span><span>{{monster.personality}}</span>
+            <li v-for="monster in monsters" :key="monster.id" class="itemMonster">
+             <span>{{monster.name}}</span><span>{{monster.personality}}</span> 
+             <span class="delete">X</span>           
             </li>
         </ul>
     </div>
@@ -33,10 +35,14 @@
 
 <script>
 import axios from 'axios'
+import InputMonsters from './InputMonsters'
 
 export default {
 
   name: 'Monsters',
+  components: {
+    InputMonsters
+  },
   data () {
     return {
       monsters: {},
@@ -66,7 +72,8 @@ export default {
 .listMonsters li{
     list-style: none;
     display: grid;
-    grid-template-columns:  1fr 1fr;
+    grid-template-columns:  1fr 1fr 0.05fr;
+
 }
 
 .navi{
@@ -83,4 +90,19 @@ export default {
   font-weight: bold;
 }
 
+.delete{
+    color:red;
+    display:none;
+    position:absolute;
+    right:40px;
+}
+
+.itemMonster:hover .delete{
+ display: inline;
+}
+
+.itemMonster:hover{
+    color:blue;
+    font-weight: bold;
+}
 </style>
