@@ -22,14 +22,13 @@
         <ul class="listMonsters">
             <li v-for="monster in monsters" :key="monster.id" class="itemMonster">
              <span>{{monster.name}}</span><span>{{monster.personality}}</span> 
-             <span class="delete">X</span>           
+             <span class="delete">x</span>           
             </li>
         </ul>
     </div>
+    <h2>Total {{monsters.length}} monsters</h2>
     
 </div>
- 
-
 
 </template>
 
@@ -73,7 +72,7 @@ export default {
     list-style: none;
     display: grid;
     grid-template-columns:  1fr 1fr 0.05fr;
-
+    margin-bottom: 5px;
 }
 
 .navi{
@@ -102,7 +101,6 @@ export default {
 }
 
 .itemMonster:hover{
-    color:blue;
     font-weight: bold;
 }
 </style>

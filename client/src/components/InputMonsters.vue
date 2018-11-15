@@ -9,8 +9,8 @@
            v-model="monsters.personality">
           <button @click="submit">Submit</button>
       </form>
-
   </div>
+   
 </template>
 
 <script>
@@ -20,7 +20,6 @@ export default {
   name: 'Home',
   data () {
     return {
-      email: '',
       monsters:[
           {
           name: '',
