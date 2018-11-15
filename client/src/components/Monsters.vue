@@ -14,6 +14,7 @@
 
     <h1>Monsters's list</h1>
     <InputMonsters />
+    
     <div class="tableMonsters">
         <div class="listHeader">
             <span>Name</span>
@@ -22,10 +23,11 @@
         <ul class="listMonsters">
             <li v-for="monster in monsters" :key="monster.id" class="itemMonster">
              <span>{{monster.name}}</span><span>{{monster.personality}}</span> 
-             <span class="delete">x</span>           
+             <button type="button" @click="deleteMonster(monster, monster._id)" class="delete">x</button>
             </li>
         </ul>
     </div>
+   
     <h2>Total {{monsters.length}} monsters</h2>
     
 </div>
@@ -44,7 +46,7 @@ export default {
   },
   data () {
     return {
-      monsters: {},
+      monsters: [] ,
     }
   },
   mounted() {
@@ -53,6 +55,16 @@ export default {
       .then((response) => {
           this.monsters = response.data
       })
+  },
+  methods: {
+      deleteMonster: function(monsters, id){
+        axios
+        .delete('http://localhost:3000/monsters/'+ monsters.id)
+        .then(response => {
+            this.monsters.splice(id, 1)
+        })
+       window.location.reload()
+      }
   }
 }
 </script>
@@ -72,7 +84,7 @@ export default {
     list-style: none;
     display: grid;
     grid-template-columns:  1fr 1fr 0.05fr;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .navi{
@@ -94,6 +106,10 @@ export default {
     display:none;
     position:absolute;
     right:40px;
+}
+
+.delete:hover {
+    cursor: pointer;
 }
 
 .itemMonster:hover .delete{
