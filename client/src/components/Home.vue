@@ -5,11 +5,13 @@
     </div>
 
     <h1>{{ msg }}</h1>
-    <img class="proPic" src="../images/jojo.jpg" alt="">
+    <img class="logo" src="../images/logo.png" alt="" height=80px width=80px>
+    <img class="logo" src="../images/nodejs.png" alt="" height=80px width=120px>
+    <img class="logo" src="../images/postgresql.png" alt="" height=80px width=90px>
 
     <div>
       <h2>Description</h2>
-      <img class="logo" src="../images/logo.png" alt="">
+      
       <p>Hello everyone! I created this app for practicing my Vue.js skills <br> combined
         with Node.js, Express.js and postgreSQL database. If you have any suggestion,<br> please
         contact me via my contact information in my profile.
@@ -24,7 +26,7 @@
         <router-link to="">Library</router-link>
       </li>
       <li class="nav-item">
-       <router-link to="">Profile</router-link>
+       <router-link to="/profile">Profile</router-link>
       </li>
     </div>
 
@@ -36,7 +38,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      msg: 'Welcome to My First Vue.Js App'
+      msg: 'Welcome to My First Vue App'
     }
   }
 }
@@ -80,8 +82,7 @@ h1{
 }
 
 .logo{
-  height: 50px;
-  width: 50px;
+  margin: 20px 40px;
 }
 
 </style>

@@ -4,6 +4,7 @@ const cors = require('cors')
 const monsters = require('./routes/monsters')
 const habitats = require('./routes/habitats')
 const lives = require('./routes/lives')
+const userprofile = require('./routes/userprofile')
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.use(cors())
 app.use('/monsters', monsters)
 app.use('/habitats', habitats)
 app.use('/lives', lives)
+app.use('/userprofile', userprofile)
 
 app.use((err, req, res, next) => {
     res.json(err)

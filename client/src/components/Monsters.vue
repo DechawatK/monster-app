@@ -8,7 +8,7 @@
         <router-link to="">Library</router-link>
       </li>
       <li class="nav-item">
-       <router-link to="">Profile</router-link>
+       <router-link to="/profile">Profile</router-link>
       </li>
     </div>
 
