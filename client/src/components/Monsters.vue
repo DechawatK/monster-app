@@ -20,16 +20,18 @@
             <span>Name</span>
             <span>Personality</span>
         </div>
-        <ul class="listMonsters">
+        <ul>
             <li v-for="monster in monsters" :key="monster.id" class="itemMonster">
-             <span>{{monster.name}}</span><span>{{monster.personality}}</span> 
-             <button type="button" @click="deleteMonster(monster, monster._id)" class="delete">x</button>
+            <div class="listMonsters" v-if="editing===false">
+             <span>{{monster.name}}</span><span>{{monster.personality}}</span>            
+             <button type="button" @click="deleteMonster(monster, monster._id)" class="delete">
+                <img src="../images/trash.png" alt="" height=15px width=15px>
+             </button>
+            </div>
             </li>
         </ul>
     </div>
-   
-    <h2>Total {{monsters.length}} monsters</h2>
-    
+    <h2>Total {{monsters.length}} monsters</h2>    
 </div>
 
 </template>
@@ -47,6 +49,7 @@ export default {
   data () {
     return {
       monsters: [] ,
+      editing: false
     }
   },
   mounted() {
@@ -64,6 +67,9 @@ export default {
             this.monsters.splice(id, 1)
         })
        window.location.reload()
+      },
+      editMonster: function(id){
+          this.editing = !this.editing
       }
   }
 }
@@ -80,7 +86,7 @@ export default {
     grid-template-columns:  1fr 1fr;
 }
 
-.listMonsters li{
+.listMonsters{
     list-style: none;
     display: grid;
     grid-template-columns:  1fr 1fr 0.05fr;
@@ -101,22 +107,43 @@ export default {
   font-weight: bold;
 }
 
+.edit {
+    background: white;
+    color:red;
+    border:none;
+    display:none;
+    position:absolute;
+    right:50px;
+}
+
 .delete{
+    border:none;
+    background: white;
     color:red;
     display:none;
     position:absolute;
-    right:40px;
+    right:20px;
 }
 
-.delete:hover {
+.delete, .edit:hover {
     cursor: pointer;
 }
 
+.itemMonster {
+    list-style:none;
+}
+
+
 .itemMonster:hover .delete{
+ display: inline;
+}
+
+.itemMonster:hover .edit{
  display: inline;
 }
 
 .itemMonster:hover{
     font-weight: bold;
 }
+
 </style>
